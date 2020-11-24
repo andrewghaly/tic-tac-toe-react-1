@@ -2,40 +2,28 @@ import React, { Component } from 'react';
 class BoardPiece extends Component {
     state = {
         isCenter: false,
+        isCenterRow: false,
         boardPieceValue: "_"
     }
 
     componentDidMount() {
-        let { isCenter } = this.props;
+        let { isCenter, isCenterRow } = this.props;
         if (isCenter === undefined) {
             isCenter = false;
         } else {
             isCenter = true;
         }
 
-        this.setState({ isCenter })
-    }
-    applyStyle(isCenter) {
-        if (isCenter) {
-            return {
-                fontSize: "100px",
-                borderLeft: "3px solid black",
-                borderRight: "3px solid black",
-                padding: "50px",
-                fontSize: "100px",
-                width: "50px"
+        // if (isCenterRow === undefined) {
+        //     isCenterRow = false;
+        // } else {
+        //     isCenterRow = true;
+        // }
 
-            }
-        }
-        else {
-            return {
-                marginRight: "50px",
-                marginLeft: "50px",
-                fontSize: "100px",
-                width: "50px"
-            }
-        }
+
+        this.setState({ isCenter, isCenterRow })
     }
+
     xo(boardPieceValue) {
         if (boardPieceValue === "_") {
             this.setState({ boardPieceValue: "x" })
@@ -54,12 +42,11 @@ class BoardPiece extends Component {
 
 
     render() {
-        const boardPieceStyle = this.applyStyle(this.state.isCenter)
-        // const boardPieceValue = this.is.xo(this.state.boardPieceValue)
-
+        const centerClass = this.state.isCenter ? "v " : "";
+        const centerRowClass = this.state.isCenterRow ? "h" : "";
 
         return (
-            <span style={boardPieceStyle} onClick={() => this.xo(this.state.boardPieceValue)}>{this.state.boardPieceValue}</span>
+            <td className={`square ${centerClass} ${centerRowClass}`} onClick={() => this.xo(this.state.boardPieceValue)}>{this.state.boardPieceValue}</td>
         );
 
     }
