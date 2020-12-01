@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import TicTacToeContext from '../contexts/ticTacToeContext'
+
 class BoardPiece extends Component {
     state = {
         isCenter: false,
@@ -25,6 +27,7 @@ class BoardPiece extends Component {
     }
 
     xo(boardPieceValue) {
+        console.log(boardPieceValue)
         if (boardPieceValue === "_") {
             this.setState({ boardPieceValue: "x" })
         }
@@ -46,7 +49,14 @@ class BoardPiece extends Component {
         const centerRowClass = this.state.isCenterRow ? "h" : "";
 
         return (
-            <td className={`square ${centerClass} ${centerRowClass}`} onClick={() => this.xo(this.state.boardPieceValue)}>{this.state.boardPieceValue}</td>
+            <TicTacToeContext.Consumer >
+                {value =>
+                    <td className={`square ${centerClass} ${centerRowClass}`}
+                        onClick={() => this.xo(value)}>{this.state.boardPieceValue}
+                    </td>
+                }
+
+            </TicTacToeContext.Consumer>
         );
 
     }
