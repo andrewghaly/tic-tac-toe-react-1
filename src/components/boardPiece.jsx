@@ -20,11 +20,11 @@ class BoardPiece extends Component {
   }
 
   changeBoardPieceValue = (context) => {
-    context.changeValue()
     let { boardPieceValue } = this.state;
 
     if (boardPieceValue === "_") {
       this.setState({ boardPieceValue: context.nextValue });
+      context.changeValue()
     }
   };
 
