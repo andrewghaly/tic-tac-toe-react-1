@@ -23,12 +23,13 @@ class Board extends Component {
       >
         <table
           style={{
-            margin: "auto",
-            padding: "5px",
-            marginTop: "150px",
+            // margin: "auto",
+            // padding: "5px",
+            //marginTop: "150px",
             backgroundColor: "lightblue",
-            width: "450px",
-            height: "375px",
+            width: "100%",
+            maxWidth: "375px"
+            // height: "375px",
           }}
         >
           <tbody>

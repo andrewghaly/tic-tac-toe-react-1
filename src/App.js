@@ -3,8 +3,14 @@ import Board from './components/board';
 
 function App() {
   return (
-    <Board >
-    </Board>
+    <div className="container" style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    }}>
+      <Board >
+      </Board>
+    </div>
   );
 }
 
